@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My SJ Babe ❤️</title> 
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background: #ffffff;
+            color: #ff66b2;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 { font-size: 8vw; margin-bottom: 15px; z-index: 2; }
+        .days { font-size: 10vw; font-weight: bold; margin: 15px 0; z-index: 2; }
+        .message { font-size: 4.5vw; line-height: 1.6; max-width: 90%; z-index: 2; }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 60px; }
+            .days { font-size: 50px; }
+            .message { font-size: 24px; max-width: 800px; }
+        }
+
+        .heart {
+            position: absolute;
+            background: #ff66b2;
+            transform: rotate(-45deg);
+            animation: floatUp linear infinite;
+            z-index: 1;
+        }
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            background: #ff66b2;
+            border-radius: 50%;
+        }
+
+        .sparkle {
+            position: absolute;
+            background: #ff99cc;
+            border-radius: 50%;
+            animation: sparkleUp linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
+        }
+
+        @keyframes sparkleUp {
+            0% { transform: translateY(0); opacity: 0.8; }
+            100% { transform: translateY(-300px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>To My SJ Babe ❤️</h1>
+    <div class="days" id="dayCount">Loading...</div>
+
+    <div class="message">
+        今天是我们在一起的第<span id="inlineDays"></span>天，<br>
+        谢谢你，把这么多的温柔和欢乐，<br>
+        带进我的生活里。<br>
+        有你的日子，<br>
+        平凡的事情都会变得有乐趣。<br>
+        我可能不太会把爱说的很甜。<br>
+        偶尔因为工作忙而不小心的忽略了你<br>
+        让你觉得我不重视你<br>
+        但我想说<br>
+        我真的很珍惜你，也很想好好的爱你。<br>
+        我很开心在我面前你可以做你自己<br>
+        笑就笑<br>
+        不开心就直说<br>
+        希望接下来的日子 可以陪你笑<br>
+        你不安 不开心的时候<br>
+        我也会在你身边。<br>
+        很爱很爱你哦 我的宝贝 &lt;3
+    </div>
+
+<script>
+    const startDate = new Date(2025, 8, 4); // Sept = month 8
+
+    function updateCounter() {
+        const today = new Date();
+        const oneDay = 1000 * 60 * 60 * 24;
+        const start = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+        const now = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        const daysPassed = Math.floor((now - start) / oneDay) + 1;
+
+        document.getElementById("dayCount").innerText = "❤️ 第 " + daysPassed + " 天 ❤️";
+        document.getElementById("inlineDays").innerText = daysPassed;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000 * 60 * 60); // every hour
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        const size = 10 + Math.random() * 20;
+        heart.style.width = size + "px";
+        heart.style.height = size + "px";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "0";
+        heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+        heart.innerHTML = "❤️";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+    }
+    setInterval(createHeart, 400);
+
+    function createSparkle() {
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        const size = 2 + Math.random() * 4;
+        sparkle.style.width = size + "px";
+        sparkle.style.height = size + "px";
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.bottom = "0";
+        sparkle.style.animationDuration = 2 + Math.random() * 2 + "s";
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 4000);
+    }
+    setInterval(createSparkle, 250);
+</script>
+
+</body>
+</html>
